@@ -27,7 +27,7 @@ class manager {
       state_t state { Buffer::make_empty_state() };
 
       {
-        std::unique_lock<std::mutex> lock(mx_);
+        std::unique_lock<std::mutex> lock { mx_ };
         cv_.wait(
           lock,
           [this]() { return can_proceed(); });
@@ -45,7 +45,7 @@ class manager {
   }
 
 public: 
-  manager(Handler handler)
+  explicit manager(Handler handler)
     : handler_ { handler }
     , state_ { Buffer::make_empty_state() }
     , is_stopping_ { false }
@@ -61,7 +61,7 @@ public:
   template <typename M>
   void post(M&& message) {
     {
-      std::lock_guard<std::mutex> lock(mx_);
+      std::lock_guard<std::mutex> lock { mx_ };
       Buffer::put(state_, std::forward<M>(message));
     }
 
@@ -73,7 +73,7 @@ template <typename Buffer>
 struct manager_factory {
   template <typename Handler>
   static manager<Buffer, Handler> create(Handler handler) {
-    return manager<Buffer, Handler>(handler);
+    return manager<Buffer, Handler>{ handler };
   }
 };
 
