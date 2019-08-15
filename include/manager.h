@@ -51,7 +51,7 @@ public:
     : handler_ { handler }
     , state_ { Buffer::make_empty_state() }
     , is_stopping_ { false }
-    , thread_ { std::thread(&this_t::run, this) }
+    , thread_ { &this_t::run, this }
   {}
 
   ~manager() {
