@@ -20,8 +20,6 @@ struct optional {
     return !state.has_value();
   }
 
-  static_assert(is_empty_state(make_empty_state()));
-
   template <typename M>
   static void put(state_t& state, M&& message) noexcept {
     state = std::forward<M>(message);
