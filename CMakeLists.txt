@@ -12,7 +12,7 @@ include(GNUInstallDirs)
 set(ASYNC_NOTIFICATION_BASE_ALIAS ${PROJECT_NAME} CACHE INTERNAL "Base targets alias" FORCE)
 set(ASYNC_NOTIFICATION_CXX_STANDART 17 CACHE INTERNAL "Project c++ standart version" FORCE)
 
-option(async_notification_BUILD_DEMO "Enable build demo target" ON)
+option(async_notification_BUILD_DEMO "Enable build demo target" OFF)
 
 add_library(${PROJECT_NAME} INTERFACE)
 add_library(${ASYNC_NOTIFICATION_BASE_ALIAS}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
