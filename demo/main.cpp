@@ -1,8 +1,8 @@
-#include "manager.h"
-#include "buffers/optional.h"
-#include "buffers/queue.h"
-#include "buffers/simple_variable.h"
-#include "buffers/unique_ptr.h"
+#include <async_notification.hpp>
+#include <async_notification/optional.hpp>
+#include <async_notification/queue.hpp>
+#include <async_notification/simple_variable.hpp>
+#include <async_notification/unique_ptr.hpp>
 
 #include <chrono>
 #include <iostream>
